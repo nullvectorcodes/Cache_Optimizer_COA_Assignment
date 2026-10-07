@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCache } from '../../context/CacheContext';
-import { Cpu, Sparkles, Layers, Activity, Tv } from 'lucide-react';
+import { Cpu, Play, Loader2, Layers, Activity, Maximize2 } from 'lucide-react';
 
 export const Header: React.FC = () => {
   const {
@@ -13,32 +13,32 @@ export const Header: React.FC = () => {
   } = useCache();
 
   return (
-    <header className="border-b border-slate-800 bg-[#070b14]/90 backdrop-blur-md sticky top-0 z-40 px-4 lg:px-8 py-3.5">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <header className="border-b border-zinc-200 bg-white/95 backdrop-blur-md sticky top-0 z-40 px-4 lg:px-8 py-3">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Brand & Subtitle */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-cyan-950/60 border border-cyan-500/40 text-cyan-400 shadow-sm">
-            <Cpu className="w-5 h-5" />
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-950 text-white shadow-sm">
+            <Cpu className="w-4 h-4" />
           </div>
           <div>
-            <h1 className="text-base lg:text-lg font-bold tracking-wider text-white uppercase font-mono-code leading-none">
+            <h1 className="text-base font-bold tracking-tight text-zinc-950 uppercase font-mono-code leading-none">
               Adaptive Cache Optimizer
             </h1>
-            <p className="text-xs text-slate-400 mt-1 tracking-tight">
+            <p className="text-xs text-zinc-500 mt-1 tracking-tight">
               Adaptive Cache Architecture for Improving Memory Performance in Modern Processors
             </p>
           </div>
         </div>
 
-        {/* ONLY TWO Primary Navigation Tabs */}
-        <div className="flex items-center p-1 bg-slate-900/90 border border-slate-800 rounded-xl shadow-inner">
+        {/* Primary Navigation Tabs */}
+        <div className="flex items-center p-1 bg-zinc-100 border border-zinc-200 rounded-lg">
           <button
             id="tab-architecture-btn"
             onClick={() => setTab('architecture')}
-            className={`flex items-center gap-2 px-5 py-2 rounded-lg text-xs font-bold tracking-wider transition uppercase font-mono-code ${
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-md text-xs font-semibold tracking-wider transition uppercase font-mono-code ${
               tab === 'architecture'
-                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
+                ? 'bg-white text-zinc-950 shadow-sm border border-zinc-200/80'
+                : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/50'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -47,10 +47,10 @@ export const Header: React.FC = () => {
           <button
             id="tab-simulator-btn"
             onClick={() => setTab('simulator')}
-            className={`flex items-center gap-2 px-5 py-2 rounded-lg text-xs font-bold tracking-wider transition uppercase font-mono-code ${
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-md text-xs font-semibold tracking-wider transition uppercase font-mono-code ${
               tab === 'simulator'
-                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
+                ? 'bg-white text-zinc-950 shadow-sm border border-zinc-200/80'
+                : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/50'
             }`}
           >
             <Activity className="w-3.5 h-3.5" />
@@ -58,41 +58,44 @@ export const Header: React.FC = () => {
           </button>
         </div>
 
-        {/* System Status & Actions (No 1.8 GHz, Clean Presentation Mode toggle) */}
-        <div className="flex items-center gap-3">
-          {/* Status Badge */}
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-mono-code text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            <span className="text-emerald-400 font-semibold tracking-wider">SYSTEM READY</span>
+        {/* System Status & Actions */}
+        <div className="flex items-center gap-2.5">
+          {/* Status Badge - clean, no unnecessary dots */}
+          <div className="hidden sm:flex items-center px-2.5 py-1.5 rounded-md bg-zinc-100 border border-zinc-200 text-xs font-mono-code text-zinc-700">
+            <span className="font-semibold tracking-wider">SYSTEM READY</span>
           </div>
 
           {/* Presentation Mode Toggle */}
           <button
             onClick={togglePresentationMode}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase transition border font-mono-code ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold tracking-wider uppercase transition border font-mono-code ${
               presentationMode
-                ? 'bg-purple-950/70 border-purple-500/50 text-purple-300 shadow-[0_0_12px_rgba(168,85,247,0.3)]'
-                : 'bg-slate-900 hover:bg-slate-800 border-slate-800 text-slate-400 hover:text-slate-200'
+                ? 'bg-zinc-900 text-white border-zinc-900 shadow-sm'
+                : 'bg-white hover:bg-zinc-100 border-zinc-300 text-zinc-700'
             }`}
-            title="Toggle Presentation Mode for Classroom Projector"
+            title="Toggle Presentation Mode"
           >
-            <Tv className="w-3.5 h-3.5 text-purple-400" />
-            <span className="hidden lg:inline">{presentationMode ? 'Presentation ON' : 'Presentation Mode'}</span>
+            <Maximize2 className="w-3.5 h-3.5" />
+            <span className="hidden lg:inline">{presentationMode ? 'Presentation ON' : 'Presentation'}</span>
           </button>
 
-          {/* Prominent Run Demo Button */}
+          {/* Clean Run Demo Button */}
           <button
             id="run-demo-btn"
             onClick={runDemo}
             disabled={isDemoRunning}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition shadow-md font-mono-code ${
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-md text-xs font-semibold tracking-wider uppercase transition font-mono-code shadow-sm ${
               isDemoRunning
-                ? 'bg-cyan-950/60 text-cyan-300 border border-cyan-800 cursor-wait'
-                : 'bg-cyan-600 hover:bg-cyan-500 text-white border border-cyan-400/40 active:scale-95 shadow-[0_0_15px_rgba(6,182,212,0.3)]'
+                ? 'bg-zinc-200 text-zinc-500 border border-zinc-300 cursor-wait'
+                : 'bg-zinc-950 hover:bg-zinc-800 text-white border border-zinc-950 active:scale-95'
             }`}
           >
-            <Sparkles className={`w-3.5 h-3.5 ${isDemoRunning ? 'animate-spin' : ''}`} />
-            <span>{isDemoRunning ? 'Simulating...' : '▶ Run Demo'}</span>
+            {isDemoRunning ? (
+              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+            ) : (
+              <Play className="w-3.5 h-3.5 fill-current" />
+            )}
+            <span>{isDemoRunning ? 'Simulating...' : 'Run Demo'}</span>
           </button>
         </div>
       </div>

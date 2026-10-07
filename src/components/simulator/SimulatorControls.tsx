@@ -28,18 +28,18 @@ export const SimulatorControls: React.FC = () => {
   const [showAdvanced, setShowAdvanced] = useState<boolean>(false);
 
   return (
-    <div className="bg-[#0b101c] border border-slate-800 rounded-3xl p-5 shadow-xl font-mono-code backdrop-blur-md">
+    <div className="bg-white border border-zinc-200 rounded-2xl p-6 shadow-sm font-mono-code">
       {/* Primary Clean Controls Row */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 items-end">
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 items-end">
         {/* Workload */}
         <div className="col-span-2 sm:col-span-2">
-          <label className="text-[10px] text-slate-400 block mb-1.5 uppercase tracking-wider font-bold">
+          <label className="text-[11px] text-zinc-600 block mb-1.5 uppercase tracking-wider font-semibold">
             Workload
           </label>
           <select
             value={workload}
             onChange={e => setWorkload(e.target.value as WorkloadType)}
-            className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-cyan-300 font-bold focus:outline-none focus:border-cyan-400 text-xs"
+            className="w-full bg-white border border-zinc-300 rounded-lg px-3 py-2 text-zinc-950 font-bold focus:outline-none focus:ring-1 focus:ring-zinc-950 focus:border-zinc-950 text-xs shadow-sm"
           >
             <option value="sequential">Sequential</option>
             <option value="random">Random</option>
@@ -51,13 +51,13 @@ export const SimulatorControls: React.FC = () => {
 
         {/* Cache Size */}
         <div>
-          <label className="text-[10px] text-slate-400 block mb-1.5 uppercase tracking-wider font-bold">
+          <label className="text-[11px] text-zinc-600 block mb-1.5 uppercase tracking-wider font-semibold">
             Cache Size
           </label>
           <select
             value={engine.config.cacheSizeBytes}
             onChange={e => updateConfig({ cacheSizeBytes: Number(e.target.value) })}
-            className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 font-semibold focus:outline-none focus:border-cyan-400 text-xs"
+            className="w-full bg-white border border-zinc-300 rounded-lg px-3 py-2 text-zinc-900 font-semibold focus:outline-none focus:ring-1 focus:ring-zinc-950 focus:border-zinc-950 text-xs shadow-sm"
           >
             <option value={4096}>4 KB</option>
             <option value={8192}>8 KB</option>
@@ -69,13 +69,13 @@ export const SimulatorControls: React.FC = () => {
 
         {/* Associativity */}
         <div>
-          <label className="text-[10px] text-slate-400 block mb-1.5 uppercase tracking-wider font-bold">
+          <label className="text-[11px] text-zinc-600 block mb-1.5 uppercase tracking-wider font-semibold">
             Associativity
           </label>
           <select
             value={engine.config.ways}
             onChange={e => updateConfig({ ways: Number(e.target.value) })}
-            className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 font-semibold focus:outline-none focus:border-cyan-400 text-xs"
+            className="w-full bg-white border border-zinc-300 rounded-lg px-3 py-2 text-zinc-900 font-semibold focus:outline-none focus:ring-1 focus:ring-zinc-950 focus:border-zinc-950 text-xs shadow-sm"
           >
             <option value={1}>Direct Mapped</option>
             <option value={2}>2-Way</option>
@@ -86,13 +86,13 @@ export const SimulatorControls: React.FC = () => {
 
         {/* Replacement */}
         <div>
-          <label className="text-[10px] text-slate-400 block mb-1.5 uppercase tracking-wider font-bold">
+          <label className="text-[11px] text-zinc-600 block mb-1.5 uppercase tracking-wider font-semibold">
             Replacement
           </label>
           <select
             value={engine.config.replacementPolicy}
             onChange={e => updateConfig({ replacementPolicy: e.target.value as ReplacementPolicyType })}
-            className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-amber-300 font-semibold focus:outline-none focus:border-cyan-400 text-xs"
+            className="w-full bg-white border border-zinc-300 rounded-lg px-3 py-2 text-zinc-900 font-semibold focus:outline-none focus:ring-1 focus:ring-zinc-950 focus:border-zinc-950 text-xs shadow-sm"
           >
             <option value="Adaptive">Adaptive</option>
             <option value="LRU">LRU</option>
@@ -102,16 +102,16 @@ export const SimulatorControls: React.FC = () => {
           </select>
         </div>
 
-        {/* Action Buttons: [ ▶ RUN ] [ STEP ] [ RESET ] */}
+        {/* Action Buttons: [ RUN ] [ STEP ] [ RESET ] */}
         <div className="col-span-2 flex items-center gap-2">
           <button
             id="sim-run-btn"
             onClick={togglePlay}
             disabled={isDemoRunning}
-            className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-bold tracking-wider uppercase transition active:scale-95 disabled:opacity-50 ${
+            className={`flex-1 flex items-center justify-center gap-2 py-2 px-3.5 rounded-lg text-xs font-semibold tracking-wider uppercase transition active:scale-95 disabled:opacity-50 shadow-sm ${
               isPlaying
-                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/50 hover:bg-amber-500/30'
-                : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm'
+                ? 'bg-zinc-100 hover:bg-zinc-200 text-zinc-900 border border-zinc-300'
+                : 'bg-zinc-950 hover:bg-zinc-800 text-white border border-zinc-950'
             }`}
           >
             {isPlaying ? (
@@ -122,7 +122,7 @@ export const SimulatorControls: React.FC = () => {
             ) : (
               <>
                 <Play className="w-3.5 h-3.5 fill-current" />
-                <span>▶ Run</span>
+                <span>Run</span>
               </>
             )}
           </button>
@@ -131,7 +131,7 @@ export const SimulatorControls: React.FC = () => {
             id="sim-step-access-btn"
             onClick={stepAccess}
             disabled={isPlaying || isDemoRunning}
-            className="flex items-center justify-center gap-1.5 py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-bold transition active:scale-95 disabled:opacity-40"
+            className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 rounded-lg text-xs font-semibold transition active:scale-95 disabled:opacity-40 shadow-sm"
             title="Execute 1 Memory Access"
           >
             <SkipForward className="w-3.5 h-3.5" />
@@ -141,7 +141,7 @@ export const SimulatorControls: React.FC = () => {
           <button
             id="sim-reset-btn"
             onClick={reset}
-            className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 border border-slate-700 rounded-xl text-xs transition active:scale-95"
+            className="p-2 bg-white hover:bg-zinc-100 text-zinc-600 hover:text-zinc-900 border border-zinc-300 rounded-lg text-xs transition active:scale-95 shadow-sm"
             title="Reset Simulation"
           >
             <RotateCcw className="w-4 h-4" />
@@ -150,29 +150,29 @@ export const SimulatorControls: React.FC = () => {
       </div>
 
       {/* Advanced Configuration Toggle */}
-      <div className="mt-3 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+      <div className="mt-4 pt-3.5 border-t border-zinc-200 flex items-center justify-between text-xs text-zinc-600">
         <button
           onClick={() => setShowAdvanced(v => !v)}
-          className="flex items-center gap-1.5 hover:text-cyan-300 transition"
+          className="flex items-center gap-1.5 hover:text-zinc-950 font-medium transition"
         >
           {showAdvanced ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
           <span>Advanced Configuration</span>
         </button>
 
-        <span className="text-[10px] text-slate-500">
+        <span className="text-xs text-zinc-500 font-mono">
           Hardware Simulation Ready
         </span>
       </div>
 
       {/* Collapsible Advanced Configuration */}
       {showAdvanced && (
-        <div className="mt-3 pt-3 border-t border-slate-800/60 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs animate-fadeIn">
+        <div className="mt-4 pt-4 border-t border-zinc-200 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs animate-fadeIn">
           <div>
-            <label className="text-[10px] text-slate-400 block mb-1 uppercase">Block Size</label>
+            <label className="text-[11px] text-zinc-600 block mb-1.5 uppercase font-medium">Block Size</label>
             <select
               value={engine.config.blockSizeBytes}
               onChange={e => updateConfig({ blockSizeBytes: Number(e.target.value) })}
-              className="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs text-slate-200"
+              className="w-full bg-white border border-zinc-300 rounded-lg p-2 text-xs text-zinc-900 font-medium focus:outline-none focus:border-zinc-950"
             >
               <option value={32}>32 Bytes</option>
               <option value={64}>64 Bytes</option>
@@ -181,11 +181,11 @@ export const SimulatorControls: React.FC = () => {
           </div>
 
           <div>
-            <label className="text-[10px] text-slate-400 block mb-1 uppercase">Simulation Speed</label>
+            <label className="text-[11px] text-zinc-600 block mb-1.5 uppercase font-medium">Simulation Speed</label>
             <select
               value={speed}
               onChange={e => setSpeed(e.target.value as any)}
-              className="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs text-slate-200"
+              className="w-full bg-white border border-zinc-300 rounded-lg p-2 text-xs text-zinc-900 font-medium focus:outline-none focus:border-zinc-950"
             >
               <option value="slow">Slow (1x)</option>
               <option value="normal">Normal (5x)</option>
@@ -195,15 +195,15 @@ export const SimulatorControls: React.FC = () => {
           </div>
 
           <div>
-            <label className="text-[10px] text-slate-400 block mb-1 uppercase">Hit Latency</label>
-            <div className="p-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 text-xs">
+            <label className="text-[11px] text-zinc-600 block mb-1.5 uppercase font-medium">Hit Latency</label>
+            <div className="p-2 rounded-lg bg-zinc-50 border border-zinc-200 text-zinc-800 text-xs font-semibold">
               {engine.config.hitLatencyNs} ns (L1)
             </div>
           </div>
 
           <div>
-            <label className="text-[10px] text-slate-400 block mb-1 uppercase">Miss Latency</label>
-            <div className="p-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 text-xs">
+            <label className="text-[11px] text-zinc-600 block mb-1.5 uppercase font-medium">Miss Latency</label>
+            <div className="p-2 rounded-lg bg-zinc-50 border border-zinc-200 text-zinc-800 text-xs font-semibold">
               {engine.config.missLatencyNs} ns (DRAM)
             </div>
           </div>

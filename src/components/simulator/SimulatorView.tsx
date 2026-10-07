@@ -8,7 +8,7 @@ import { PerformanceGraphs } from './PerformanceGraphs';
 
 export const SimulatorView: React.FC = () => {
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 lg:px-8 py-6 space-y-5 animate-fadeIn font-mono-code">
+    <div className="w-full max-w-6xl mx-auto px-4 lg:px-8 py-8 space-y-6 font-mono-code">
       {/* 1. Simplified Simulator Controls */}
       <SimulatorControls />
 
@@ -19,7 +19,7 @@ export const SimulatorView: React.FC = () => {
       <SimulatorMetricsAndComparison />
 
       {/* 4. Two Compact Panels: Memory Activity (5-8 rows) & Cache Occupancy Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <CompactMemoryActivity />
         <CompactCacheGrid />
       </div>

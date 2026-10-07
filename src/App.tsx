@@ -18,34 +18,33 @@ const MainContent: React.FC = () => {
 export function App() {
   return (
     <CacheProvider>
-      <div className="min-h-screen flex flex-col bg-[#070a10] text-slate-200 clean-dark-bg selection:bg-cyan-500/20 selection:text-cyan-200">
+      <div className="min-h-screen flex flex-col bg-zinc-50 text-zinc-900 selection:bg-zinc-900 selection:text-white">
         {/* Navigation & Status Header */}
         <Header />
 
         {/* Dynamic Primary Workspace */}
         <MainContent />
 
-        {/* Futuristic Semiconductor Footer */}
-        <footer className="border-t border-slate-800/80 bg-slate-950/80 backdrop-blur-md py-4 px-4 lg:px-8 mt-12 text-xs font-mono-code text-slate-500">
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+        {/* Clean Professional Footer */}
+        <footer className="border-t border-zinc-200 bg-white py-4 px-4 lg:px-8 mt-12 text-xs font-mono-code text-zinc-500">
+          <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400" />
-              <span className="text-slate-400 font-bold">
+              <span className="text-zinc-900 font-semibold">
                 Adaptive Cache Optimizer
               </span>
-              <span>•</span>
-              <span className="text-slate-500">
+              <span className="text-zinc-300">•</span>
+              <span className="text-zinc-500">
                 COA High-Performance Processor Research Platform
               </span>
             </div>
 
-            <div className="flex items-center gap-4 text-[11px] text-slate-500">
-              <span className="flex items-center gap-1">
-                <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="flex items-center gap-4 text-[11px] text-zinc-500">
+              <span className="flex items-center gap-1.5">
+                <Cpu className="w-3.5 h-3.5 text-zinc-700" />
                 L1 Data / Dynamic Prefetch
               </span>
-              <span className="flex items-center gap-1">
-                <Shield className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="flex items-center gap-1.5">
+                <Shield className="w-3.5 h-3.5 text-zinc-700" />
                 Dual-Engine Baseline Verifier
               </span>
             </div>

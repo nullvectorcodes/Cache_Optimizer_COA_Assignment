@@ -20,80 +20,80 @@ export const CompactStepStatus: React.FC = () => {
     : '0x1040';
 
   return (
-    <div className="bg-[#0b101c] border border-slate-800 rounded-3xl p-5 shadow-lg font-mono-code backdrop-blur-sm">
+    <div className="bg-white border border-zinc-200 rounded-2xl p-6 shadow-sm font-mono-code">
       {/* Simple Progress Indicator: CPU → CACHE → MEMORY → ADAPTIVE */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-800">
-        <div className="flex items-center gap-1 sm:gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider">
-          <span className="px-2.5 py-1 rounded-lg bg-cyan-950/70 border border-cyan-500/40 text-cyan-300">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 mb-4 border-b border-zinc-200">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-xs font-semibold uppercase tracking-wider">
+          <span className="px-3 py-1 rounded-md bg-zinc-100 border border-zinc-200 text-zinc-900">
             CPU
           </span>
-          <ArrowRight className="w-3.5 h-3.5 text-slate-600" />
-          <span className="px-2.5 py-1 rounded-lg bg-cyan-950/70 border border-cyan-500/40 text-cyan-300">
+          <ArrowRight className="w-3.5 h-3.5 text-zinc-400" />
+          <span className="px-3 py-1 rounded-md bg-zinc-100 border border-zinc-200 text-zinc-900">
             CACHE
           </span>
-          <ArrowRight className="w-3.5 h-3.5 text-slate-600" />
-          <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 text-slate-300">
+          <ArrowRight className="w-3.5 h-3.5 text-zinc-400" />
+          <span className="px-3 py-1 rounded-md bg-zinc-100 border border-zinc-200 text-zinc-900">
             MEMORY
           </span>
-          <ArrowRight className="w-3.5 h-3.5 text-slate-600" />
-          <span className="px-2.5 py-1 rounded-lg bg-amber-950/70 border border-amber-500/40 text-amber-300">
+          <ArrowRight className="w-3.5 h-3.5 text-zinc-400" />
+          <span className="px-3 py-1 rounded-md bg-zinc-900 text-white font-bold">
             ADAPTIVE
           </span>
         </div>
 
-        <span className="text-[10px] text-slate-400">
-          Transactions Logged: <strong className="text-white">{engine.metrics.totalAccesses}</strong>
+        <span className="text-xs text-zinc-500">
+          Transactions Logged: <strong className="text-zinc-950 font-bold">{engine.metrics.totalAccesses}</strong>
         </span>
       </div>
 
       {/* Operation Status */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
         {/* Current Operation */}
-        <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+        <div className="p-4 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-between">
           <div>
-            <span className="text-[10px] uppercase text-slate-500 font-bold block mb-1">
+            <span className="text-[11px] uppercase text-zinc-500 font-semibold block mb-1">
               Current Operation
             </span>
             <div className="flex items-center gap-2">
-              <span className="text-slate-400">Address:</span>
-              <span className="font-bold text-white text-sm">{currentAddr}</span>
+              <span className="text-zinc-500">Address:</span>
+              <span className="font-bold text-zinc-950 text-sm">{currentAddr}</span>
             </div>
           </div>
 
           <div className="text-right">
-            <span className="text-[10px] uppercase text-slate-500 font-bold block mb-1">
+            <span className="text-[11px] uppercase text-zinc-500 font-semibold block mb-1">
               Result
             </span>
             <span
-              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold text-xs ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md font-bold text-xs ${
                 isHit
-                  ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-500/40'
-                  : 'bg-rose-950/80 text-rose-400 border border-rose-500/40'
+                  ? 'bg-zinc-900 text-white border border-zinc-900'
+                  : 'bg-white text-zinc-800 border border-zinc-300'
               }`}
             >
-              {isHit ? <CheckCircle2 className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5" />}
+              {isHit ? <CheckCircle2 className="w-3.5 h-3.5 text-zinc-200" /> : <XCircle className="w-3.5 h-3.5 text-zinc-600" />}
               {isPrefetchHit ? 'PREFETCH HIT' : isHit ? 'CACHE HIT' : 'CACHE MISS'}
             </span>
           </div>
         </div>
 
         {/* Next / Adaptive Action */}
-        <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+        <div className="p-4 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-between">
           <div>
-            <span className="text-[10px] uppercase text-slate-500 font-bold block mb-1">
+            <span className="text-[11px] uppercase text-zinc-500 font-semibold block mb-1">
               Next Lookahead Address
             </span>
             <div className="flex items-center gap-2">
-              <span className="text-slate-400">Address:</span>
-              <span className="font-bold text-cyan-300 text-sm">{nextAddr}</span>
+              <span className="text-zinc-500">Address:</span>
+              <span className="font-bold text-zinc-950 text-sm">{nextAddr}</span>
             </div>
           </div>
 
           <div className="text-right">
-            <span className="text-[10px] uppercase text-slate-500 font-bold block mb-1">
+            <span className="text-[11px] uppercase text-zinc-500 font-semibold block mb-1">
               Controller Action
             </span>
-            <span className="text-amber-300 font-bold text-xs">
+            <span className="text-zinc-950 font-bold text-xs px-2.5 py-1 rounded-md bg-zinc-200/80 border border-zinc-300 inline-block">
               {optimizerDecision.prefetch !== 'DISABLED' ? 'PREFETCH NEXT' : 'NORMAL LOOKUP'}
             </span>
           </div>
